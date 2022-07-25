@@ -94,4 +94,4 @@ def get_root_path():
 
 
 def get_db_url():
-    return 'sqlite:///{}/{}/aim_db'.format(get_root_path(), get_aim_repo_name())
+    return 'rqlite+pyrqlite://localhost:4001/'
