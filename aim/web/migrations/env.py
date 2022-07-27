@@ -76,8 +76,12 @@ def run_migrations_online():
                 logger.info('No changes in schema detected.')
 
     connectable = engine
+    print(connectable)
 
     with connectable.connect() as connection:
+        print(connection)
+        print(target_metadata)
+        print(process_revision_directives)
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
