@@ -91,10 +91,26 @@ def run_migrations_online():
         with context.begin_transaction():
             context.run_migrations()
 
+import sys
 
+def trace_calls_and_returns(frame, event, arg):
+    co = frame.f_code
+    func_name = co.co_name
+    if func_name == 'write':
+        # Ignore write() calls from print statements
+        return
+    line_no = frame.f_lineno
+    filename = co.co_filename
+    if event == 'call':
+        print(f'Call to {func_name} on line {line_no} of {filename}')
+        return trace_calls_and_returns
+    elif event == 'return':
+        print(f'{func_name} => {arg}')
+    return
+
+
+sys.settrace(trace_calls_and_returns)
 if context.is_offline_mode():
-    # run_migrations_offline()
-    ...
+    run_migrations_offline()
 else:
-    # run_migrations_online()
-    ...
+    run_migrations_online()
