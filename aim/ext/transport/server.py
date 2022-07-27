@@ -147,6 +147,10 @@ class RemoteTrackingServicer(remote_tracking_pb2_grpc.RemoteTrackingServiceServi
 
             write_instructions = decode_tree(unpack_bytes(raw_message))
             for instruction in write_instructions:
+                print('instruction')
+                print(instruction)
+                print('resource_pool')
+                print(self.resource_pool)
                 resource_handler, method_name, args = instruction
 
                 self._verify_resource_handler(resource_handler, client_uri)
