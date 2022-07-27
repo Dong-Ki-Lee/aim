@@ -94,4 +94,4 @@ def get_root_path():
 
 
 def get_db_url():
-    return 'rqlite+pyrqlite://localhost:4001/'
+    return 'dqlite+pydqlite://localhost:4001/'

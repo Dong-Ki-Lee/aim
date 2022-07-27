@@ -41,8 +41,8 @@ class ObjectCache:
 
 
 class DB(ObjectFactory):
-    _DIALECT = 'rqlite+pyrqlite'
-    _DB_NAME = 'run_metadata.rqlite'
+    _DIALECT = 'dqlite+pydqlite'
+    _DB_NAME = 'run_metadata.dqlite'
     _pool = WeakValueDictionary()
 
     _caches = dict()
