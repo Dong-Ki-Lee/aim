@@ -41,8 +41,8 @@ class ObjectCache:
 
 
 class DB(ObjectFactory):
-    _DIALECT = 'dqlite+pydqlite'
-    _DB_NAME = 'run_metadata.dqlite'
+    _DIALECT = 'rqlite+pyrqlite'
+    _DB_NAME = 'run_metadata.rqlite'
     _pool = WeakValueDictionary()
 
     _caches = dict()
@@ -73,11 +73,8 @@ class DB(ObjectFactory):
 
     @staticmethod
     def get_db_url(path: str) -> str:
-        if os.path.exists(path):
-            db_url = f'{DB._DIALECT}:///{path}/{DB._DB_NAME}'
-            return db_url
-        else:
-            raise RuntimeError(f'Cannot find database {path}. Please init first.')
+        db_url = f'{DB._DIALECT}://localhost:4001/'
+        return db_url
 
     @property
     def caches(self):
