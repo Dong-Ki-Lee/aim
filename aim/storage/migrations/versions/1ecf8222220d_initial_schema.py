@@ -21,24 +21,20 @@ def upgrade():
     op.create_table('experiment',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('uuid', sa.Text(), nullable=True),
-    sa.Column('name', sa.Text(length=200), nullable=False),
+    sa.Column('name', sa.Text(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name'),
-    sa.UniqueConstraint('name')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_experiment_uuid'), 'experiment', ['uuid'], unique=True)
     op.create_table('tag',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('uuid', sa.Text(), nullable=True),
-    sa.Column('name', sa.Text(length=200), nullable=False),
+    sa.Column('name', sa.Text(), nullable=False),
     sa.Column('color', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name'),
-    sa.UniqueConstraint('name')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_tag_uuid'), 'tag', ['uuid'], unique=True)
     op.create_table('run',
