@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('experiment',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('uuid', sa.Text(), nullable=True),
-    sa.Column('name', sa.Text(), nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
