@@ -94,4 +94,4 @@ def get_root_path():
 
 
 def get_db_url():
-    return 'rqlite+pyrqlite://localhost:4001/'
+    return f'mysql+pymysql://root:toor@localhost:3306/run_metadata?charset=utf8mb4'

@@ -41,8 +41,8 @@ class ObjectCache:
 
 
 class DB(ObjectFactory):
-    _DIALECT = 'rqlite+pyrqlite'
-    _DB_NAME = 'run_metadata.rqlite'
+    _DIALECT = 'mysql+pymysql'
+    _DB_NAME = 'run_metadata'
     _pool = WeakValueDictionary()
 
     _caches = dict()
@@ -73,7 +73,7 @@ class DB(ObjectFactory):
 
     @staticmethod
     def get_db_url(path: str) -> str:
-        db_url = f'{DB._DIALECT}://localhost:4001/'
+        db_url = f'{DB._DIALECT}://root:toor@localhost:3306/{DB._DB_NAME}?charset=utf8mb4'
         return db_url
 
     @property
